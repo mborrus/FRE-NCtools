@@ -1,0 +1,165 @@
+$ make
+(CDPATH="${ZSH_VERSION+.}:" && cd . && /bin/sh /home/users/mborrus/FRE-NCtools/missing autoheader)
+rm -f stamp-h1
+touch config.h.in
+cd . && /bin/sh ./config.status config.h
+config.status: creating config.h
+config.status: config.h is unchanged
+make  all-recursive
+make[1]: Entering directory `/home/users/mborrus/FRE-NCtools'
+Making all in postprocessing/combine_blobs
+make[2]: Entering directory `/home/users/mborrus/FRE-NCtools/postprocessing/combine_blobs'
+gcc -DHAVE_CONFIG_H -I. -I../..    -I/share/software/user/open/netcdf/4.4.1.1/include  -g -O2 -MT combine_blobs-combine_blobs.o -MD -MP -MF .deps/combine_blobs-combine_blobs.Tpo -c -o combine_blobs-combine_blobs.o `test -f 'combine_blobs.c' || echo './'`combine_blobs.c
+mv -f .deps/combine_blobs-combine_blobs.Tpo .deps/combine_blobs-combine_blobs.Po
+gcc -I/share/software/user/open/netcdf/4.4.1.1/include  -g -O2   -o combine_blobs combine_blobs-combine_blobs.o -L/share/software/user/open/netcdf/4.4.1.1/lib  -lnetcdf  -lm 
+make[2]: Leaving directory `/home/users/mborrus/FRE-NCtools/postprocessing/combine_blobs'
+Making all in postprocessing/combine_restarts
+make[2]: Entering directory `/home/users/mborrus/FRE-NCtools/postprocessing/combine_restarts'
+make[2]: Nothing to be done for `all'.
+make[2]: Leaving directory `/home/users/mborrus/FRE-NCtools/postprocessing/combine_restarts'
+Making all in postprocessing/iceberg_comb
+make[2]: Entering directory `/home/users/mborrus/FRE-NCtools/postprocessing/iceberg_comb'
+make[2]: Nothing to be done for `all'.
+make[2]: Leaving directory `/home/users/mborrus/FRE-NCtools/postprocessing/iceberg_comb'
+Making all in postprocessing/land_utils
+make[2]: Entering directory `/home/users/mborrus/FRE-NCtools/postprocessing/land_utils'
+gfortran -DHAVE_CONFIG_H -I. -I../..    -fdefault-real-8 -I/share/software/user/open/netcdf/4.4.1.1/include -g -O2 -ffree-line-length-none -fcray-pointer -c -o nfu.o nfu.F90
+gfortran -DHAVE_CONFIG_H -I. -I../..    -fdefault-real-8 -I/share/software/user/open/netcdf/4.4.1.1/include -g -O2 -ffree-line-length-none -fcray-pointer -c -o nfu_compress.o nfu_compress.F90
+rm -f libnfu.a
+ar cru libnfu.a nfu.o nfu_compress.o 
+ranlib libnfu.a
+gfortran -DHAVE_CONFIG_H -I. -I../..    -fdefault-real-8 -I/share/software/user/open/netcdf/4.4.1.1/include -g -O2 -ffree-line-length-none -fcray-pointer -c -o combine-ncc.o combine-ncc.F90
+gfortran -fdefault-real-8 -I/share/software/user/open/netcdf/4.4.1.1/include -g -O2 -ffree-line-length-none -fcray-pointer   -o combine-ncc combine-ncc.o libnfu.a -L/share/software/user/open/netcdf/4.4.1.1/lib -L/share/software/user/open/netcdf/4.4.1.1/lib  -lnetcdff -lnetcdf  -lm 
+gfortran -DHAVE_CONFIG_H -I. -I../..    -fdefault-real-8 -I/share/software/user/open/netcdf/4.4.1.1/include -g -O2 -ffree-line-length-none -fcray-pointer -c -o decompress-ncc.o decompress-ncc.F90
+gfortran -fdefault-real-8 -I/share/software/user/open/netcdf/4.4.1.1/include -g -O2 -ffree-line-length-none -fcray-pointer   -o decompress-ncc decompress-ncc.o libnfu.a -L/share/software/user/open/netcdf/4.4.1.1/lib -L/share/software/user/open/netcdf/4.4.1.1/lib  -lnetcdff -lnetcdf  -lm 
+gcc -DHAVE_CONFIG_H -I. -I../..    -I/share/software/user/open/netcdf/4.4.1.1/include -g -O2 -MT is-compressed.o -MD -MP -MF .deps/is-compressed.Tpo -c -o is-compressed.o is-compressed.c
+mv -f .deps/is-compressed.Tpo .deps/is-compressed.Po
+gcc -I/share/software/user/open/netcdf/4.4.1.1/include -g -O2   -o is-compressed is-compressed.o -L/share/software/user/open/netcdf/4.4.1.1/lib  -lnetcdf  -lm 
+gfortran -DHAVE_CONFIG_H -I. -I../..    -fdefault-real-8 -I/share/software/user/open/netcdf/4.4.1.1/include -g -O2 -ffree-line-length-none -fcray-pointer -c -o scatter-ncc.o scatter-ncc.F90
+gfortran -fdefault-real-8 -I/share/software/user/open/netcdf/4.4.1.1/include -g -O2 -ffree-line-length-none -fcray-pointer   -o scatter-ncc scatter-ncc.o libnfu.a -L/share/software/user/open/netcdf/4.4.1.1/lib -L/share/software/user/open/netcdf/4.4.1.1/lib  -lnetcdff -lnetcdf  -lm 
+make[2]: Leaving directory `/home/users/mborrus/FRE-NCtools/postprocessing/land_utils'
+Making all in postprocessing/list_ncvars
+make[2]: Entering directory `/home/users/mborrus/FRE-NCtools/postprocessing/list_ncvars'
+gfortran -I/share/software/user/open/netcdf/4.4.1.1/include -fdefault-real-8  -g -O2 -ffree-line-length-none -fcray-pointer -c -o list_ncvars_exe-list_ncvars.o  `test -f 'list_ncvars.f90' || echo './'`list_ncvars.f90
+gfortran -I/share/software/user/open/netcdf/4.4.1.1/include -fdefault-real-8  -g -O2 -ffree-line-length-none -fcray-pointer   -o list_ncvars.exe list_ncvars_exe-list_ncvars.o -L/share/software/user/open/netcdf/4.4.1.1/lib -L/share/software/user/open/netcdf/4.4.1.1/lib  -lnetcdff -lnetcdf  -lm 
+make[2]: Leaving directory `/home/users/mborrus/FRE-NCtools/postprocessing/list_ncvars'
+Making all in postprocessing/mppnccombine
+make[2]: Entering directory `/home/users/mborrus/FRE-NCtools/postprocessing/mppnccombine'
+gcc -DHAVE_CONFIG_H -I. -I../..    -I/share/software/user/open/netcdf/4.4.1.1/include  -g -O2 -MT mppnccombine-mppnccombine.o -MD -MP -MF .deps/mppnccombine-mppnccombine.Tpo -c -o mppnccombine-mppnccombine.o `test -f 'mppnccombine.c' || echo './'`mppnccombine.c
+mv -f .deps/mppnccombine-mppnccombine.Tpo .deps/mppnccombine-mppnccombine.Po
+gcc -I/share/software/user/open/netcdf/4.4.1.1/include  -g -O2   -o mppnccombine mppnccombine-mppnccombine.o -L/share/software/user/open/netcdf/4.4.1.1/lib  -lnetcdf  -lm -lm 
+make[2]: Leaving directory `/home/users/mborrus/FRE-NCtools/postprocessing/mppnccombine'
+Making all in postprocessing/plevel
+make[2]: Entering directory `/home/users/mborrus/FRE-NCtools/postprocessing/plevel'
+gfortran -DHAVE_CONFIG_H -I. -I../..    -fdefault-real-8 -I/share/software/user/open/netcdf/4.4.1.1/include -g -O2 -ffree-line-length-none -fcray-pointer -c -o PLEV_exe-plev_constants.o `test -f 'plev_constants.F90' || echo './'`plev_constants.F90
+gfortran -DHAVE_CONFIG_H -I. -I../..    -fdefault-real-8 -I/share/software/user/open/netcdf/4.4.1.1/include -g -O2 -ffree-line-length-none -fcray-pointer -c -o PLEV_exe-moisture_convert.o `test -f 'moisture_convert.F90' || echo './'`moisture_convert.F90
+gfortran -DHAVE_CONFIG_H -I. -I../..    -fdefault-real-8 -I/share/software/user/open/netcdf/4.4.1.1/include -g -O2 -ffree-line-length-none -fcray-pointer -c -o PLEV_exe-pressure_interp.o `test -f 'pressure_interp.F90' || echo './'`pressure_interp.F90
+gfortran -DHAVE_CONFIG_H -I. -I../..    -fdefault-real-8 -I/share/software/user/open/netcdf/4.4.1.1/include -g -O2 -ffree-line-length-none -fcray-pointer -c -o PLEV_exe-pinterp_utilities.o `test -f 'pinterp_utilities.F90' || echo './'`pinterp_utilities.F90
+gfortran -DHAVE_CONFIG_H -I. -I../..    -fdefault-real-8 -I/share/software/user/open/netcdf/4.4.1.1/include -g -O2 -ffree-line-length-none -fcray-pointer -c -o PLEV_exe-run_pressure_interp.o `test -f 'run_pressure_interp.F90' || echo './'`run_pressure_interp.F90
+gfortran -fdefault-real-8 -I/share/software/user/open/netcdf/4.4.1.1/include -g -O2 -ffree-line-length-none -fcray-pointer   -o PLEV.exe PLEV_exe-plev_constants.o PLEV_exe-moisture_convert.o PLEV_exe-pressure_interp.o PLEV_exe-pinterp_utilities.o PLEV_exe-run_pressure_interp.o -L/share/software/user/open/netcdf/4.4.1.1/lib -L/share/software/user/open/netcdf/4.4.1.1/lib  -lnetcdff -lnetcdf  -lm 
+gfortran -DHAVE_CONFIG_H -I. -I../..     -I/share/software/user/open/netcdf/4.4.1.1/include -g -O2 -ffree-line-length-none -fcray-pointer -c -o PLEV_r4_exe-plev_constants.o `test -f 'plev_constants.F90' || echo './'`plev_constants.F90
+gfortran -DHAVE_CONFIG_H -I. -I../..     -I/share/software/user/open/netcdf/4.4.1.1/include -g -O2 -ffree-line-length-none -fcray-pointer -c -o PLEV_r4_exe-moisture_convert.o `test -f 'moisture_convert.F90' || echo './'`moisture_convert.F90
+gfortran -DHAVE_CONFIG_H -I. -I../..     -I/share/software/user/open/netcdf/4.4.1.1/include -g -O2 -ffree-line-length-none -fcray-pointer -c -o PLEV_r4_exe-pressure_interp.o `test -f 'pressure_interp.F90' || echo './'`pressure_interp.F90
+gfortran -DHAVE_CONFIG_H -I. -I../..     -I/share/software/user/open/netcdf/4.4.1.1/include -g -O2 -ffree-line-length-none -fcray-pointer -c -o PLEV_r4_exe-pinterp_utilities.o `test -f 'pinterp_utilities.F90' || echo './'`pinterp_utilities.F90
+gfortran -DHAVE_CONFIG_H -I. -I../..     -I/share/software/user/open/netcdf/4.4.1.1/include -g -O2 -ffree-line-length-none -fcray-pointer -c -o PLEV_r4_exe-run_pressure_interp.o `test -f 'run_pressure_interp.F90' || echo './'`run_pressure_interp.F90
+gfortran  -I/share/software/user/open/netcdf/4.4.1.1/include -g -O2 -ffree-line-length-none -fcray-pointer   -o PLEV.r4.exe PLEV_r4_exe-plev_constants.o PLEV_r4_exe-moisture_convert.o PLEV_r4_exe-pressure_interp.o PLEV_r4_exe-pinterp_utilities.o PLEV_r4_exe-run_pressure_interp.o -L/share/software/user/open/netcdf/4.4.1.1/lib -L/share/software/user/open/netcdf/4.4.1.1/lib  -lnetcdff -lnetcdf  -lm 
+make[2]: Leaving directory `/home/users/mborrus/FRE-NCtools/postprocessing/plevel'
+Making all in postprocessing/split_ncvars
+make[2]: Entering directory `/home/users/mborrus/FRE-NCtools/postprocessing/split_ncvars'
+make[2]: Nothing to be done for `all'.
+make[2]: Leaving directory `/home/users/mborrus/FRE-NCtools/postprocessing/split_ncvars'
+Making all in postprocessing/timavg
+make[2]: Entering directory `/home/users/mborrus/FRE-NCtools/postprocessing/timavg'
+gfortran -fdefault-real-8 -I/share/software/user/open/netcdf/4.4.1.1/include -g -O2 -ffree-line-length-none -fcray-pointer -c -o TAVG_exe-time_average.o  `test -f 'time_average.f90' || echo './'`time_average.f90
+gfortran -fdefault-real-8 -I/share/software/user/open/netcdf/4.4.1.1/include -g -O2 -ffree-line-length-none -fcray-pointer   -o TAVG.exe TAVG_exe-time_average.o -L/share/software/user/open/netcdf/4.4.1.1/lib -L/share/software/user/open/netcdf/4.4.1.1/lib  -lnetcdff -lnetcdf  -lm 
+gfortran  -I/share/software/user/open/netcdf/4.4.1.1/include -g -O2 -ffree-line-length-none -fcray-pointer -c -o TAVG_r4_exe-time_average.o  `test -f 'time_average.f90' || echo './'`time_average.f90
+gfortran  -I/share/software/user/open/netcdf/4.4.1.1/include -g -O2 -ffree-line-length-none -fcray-pointer   -o TAVG.r4.exe TAVG_r4_exe-time_average.o -L/share/software/user/open/netcdf/4.4.1.1/lib -L/share/software/user/open/netcdf/4.4.1.1/lib  -lnetcdff -lnetcdf  -lm 
+make[2]: Leaving directory `/home/users/mborrus/FRE-NCtools/postprocessing/timavg'
+Making all in tools/libfrencutils
+make[2]: Entering directory `/home/users/mborrus/FRE-NCtools/tools/libfrencutils'
+gcc -DHAVE_CONFIG_H -I. -I../..    -I/share/software/user/open/netcdf/4.4.1.1/include -g -O2 -MT affinity.o -MD -MP -MF .deps/affinity.Tpo -c -o affinity.o affinity.c
+mv -f .deps/affinity.Tpo .deps/affinity.Po
+gcc -DHAVE_CONFIG_H -I. -I../..    -I/share/software/user/open/netcdf/4.4.1.1/include -g -O2 -MT create_xgrid.o -MD -MP -MF .deps/create_xgrid.Tpo -c -o create_xgrid.o create_xgrid.c
+In file included from create_xgrid.c:23:0:
+create_xgrid.c: In function ‘clip_2dx2d’:
+mosaic_util.h:34:6: error: expected expression before ‘long’
+      long double: fabsl, \
+      ^
+create_xgrid.c:1313:12: note: in expansion of macro ‘fabs’
+         if(fabs(determ) < EPSLN30) {
+            ^
+create_xgrid.c: In function ‘pimod’:
+create_xgrid.c:1344:3: error: ‘for’ loop initial declarations are only allowed in C99 mode
+   for (int i=0;i<nn;i++) {
+   ^
+create_xgrid.c:1344:3: note: use option -std=c99 or -std=gnu99 to compile your code
+In file included from create_xgrid.c:23:0:
+create_xgrid.c: In function ‘line_intersect_2D_3D’:
+mosaic_util.h:34:6: error: expected expression before ‘long’
+      long double: fabsl, \
+      ^
+create_xgrid.c:2000:6: note: in expansion of macro ‘fabs’
+   if(fabs(*u_a) < EPSLN8) *u_a = 0;
+      ^
+mosaic_util.h:34:6: error: expected expression before ‘long’
+      long double: fabsl, \
+      ^
+create_xgrid.c:2001:6: note: in expansion of macro ‘fabs’
+   if(fabs(*u_a-1) < EPSLN8) *u_a = 1;
+      ^
+mosaic_util.h:34:6: error: expected expression before ‘long’
+      long double: fabsl, \
+      ^
+create_xgrid.c:2028:6: note: in expansion of macro ‘fabs’
+   if(fabs(*u_q) < EPSLN8) *u_q = 0;
+      ^
+mosaic_util.h:34:6: error: expected expression before ‘long’
+      long double: fabsl, \
+      ^
+create_xgrid.c:2029:6: note: in expansion of macro ‘fabs’
+   if(fabs(*u_q-1) < EPSLN8) *u_q = 1;
+      ^
+mosaic_util.h:34:6: error: expected expression before ‘long’
+      long double: fabsl, \
+      ^
+create_xgrid.c:2045:6: note: in expansion of macro ‘fabs’
+   if(fabs(coincident) < EPSLN30) return 0;
+      ^
+create_xgrid.c: In function ‘poly_ctrlat’:
+mosaic_util.h:34:6: error: expected expression before ‘long’
+      long double: fabsl, \
+      ^
+create_xgrid.c:2107:10: note: in expansion of macro ‘fabs’
+     if ( fabs(hdy)< SMALL_VALUE ) /* cheap area calculation along latitude */
+          ^
+create_xgrid.c: In function ‘poly_ctrlon’:
+mosaic_util.h:34:6: error: expected expression before ‘long’
+      long double: fabsl, \
+      ^
+create_xgrid.c:2151:8: note: in expansion of macro ‘fabs’
+     if(fabs(dphi2 -dphi1) < M_PI) {
+        ^
+mosaic_util.h:34:6: error: expected expression before ‘long’
+      long double: fabsl, \
+      ^
+create_xgrid.c:2159:39: note: in expansion of macro ‘fabs’
+       fint = f1 + (f2-f1)*(fac-dphi1)/fabs(dphi);
+                                       ^
+create_xgrid.c: In function ‘box_ctrlon’:
+mosaic_util.h:34:6: error: expected expression before ‘long’
+      long double: fabsl, \
+      ^
+create_xgrid.c:2219:8: note: in expansion of macro ‘fabs’
+     if(fabs(dphi2 -dphi1) < M_PI) {
+        ^
+mosaic_util.h:34:6: error: expected expression before ‘long’
+      long double: fabsl, \
+      ^
+create_xgrid.c:2227:39: note: in expansion of macro ‘fabs’
+       fint = f1 + (f2-f1)*(fac-dphi1)/fabs(dphi);
+                                       ^
+make[2]: *** [create_xgrid.o] Error 1
+make[2]: Leaving directory `/home/users/mborrus/FRE-NCtools/tools/libfrencutils'
+make[1]: *** [all-recursive] Error 1
+make[1]: Leaving directory `/home/users/mborrus/FRE-NCtools'
+make: *** [all] Error 2
