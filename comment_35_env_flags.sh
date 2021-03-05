@@ -7,4 +7,4 @@ export FCFLAGS="-fcray-pointer -Waliasing -ffree-line-length-none -fno-range-che
  -ffpe-trap=invalid,zero,overflow `nf-config --fflags ` "
 export CPPFLAGS="-O2 -g `nc-config --cflags ` "
 export CFLAGS="-O2 -g `nc-config --cflags ` "
-export LDFLAGS=" `nc-config --cflags "
+export LDFLAGS=" `nc-config --cflags ` "
