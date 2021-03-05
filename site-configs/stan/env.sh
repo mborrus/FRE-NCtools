@@ -12,8 +12,7 @@ module load physics
 # **********************************************************************
 # Set environment variables
 # **********************************************************************
- export LD_RUN_PATH=$LD_LIBRARY_PATH <- ran it with this, got stuck at Fortran compilation in ./compile..
-
+ export LD_RUN_PATH=$LD_LIBRARY_PATH 
 # **********************************************************************
 # Set environment variables
 # **********************************************************************
