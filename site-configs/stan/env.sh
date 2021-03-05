@@ -12,9 +12,9 @@ module load physics
 # **********************************************************************
 # Set environment variables
 # **********************************************************************
-# export LD_RUN_PATH=$LD_LIBRARY_PATH <- ran it with this, got stuck at Fortran compilation in ./compile..
+ export LD_RUN_PATH=$LD_LIBRARY_PATH <- ran it with this, got stuck at Fortran compilation in ./compile..
 
 # **********************************************************************
 # Set environment variables
 # **********************************************************************
-export CONFIG_SITE=/home/users/mborrus/FRE-NCtools/site-configs/stan/config.site
+#export CONFIG_SITE=/home/users/mborrus/FRE-NCtools/site-configs/stan/config.site
